@@ -1,0 +1,117 @@
+//Nome completo: Gustavo Wallace Macedo Santos		Matr�cula: UC20101940		Curso: Ci�ncias da Computa��o
+//Fazer um c�digo para realizar uma pesquisa para descobrir o perfil das pessoas que frequentam as sess�es de filmes em Bras�lia
+//entradas: quantidade de sess�es, come do filme, quantidade de pessoas, sexo e idade de cada pessoa
+//sa�da: nome do filme quantidade de pessoas do sexo feminino e masculino e quantidade de pessoas por faixa et�ria
+
+#include<stdio.h> //biblioteca para printf e scanf
+#include<locale.h> //biblioteca para acentua��o de caracteres
+#include<ctype.h> //biblioteca para o uso do toupper e tolower(convers�o de caracter para mai�culo/min�sculo)
+#include<string.h> //biblioteca para strlen e strcmp (compara��o de string)
+#include<stdlib.h> //biblioteca para a fun��o de limpar a tela
+
+int main(){//in�cio do algor�timo
+	setlocale(LC_ALL, "Portuguese");//adapta��o para idioma portugu�s
+	
+	char nomeFilme[30],sexo,novaPesquisa;//apresenta��o de vari�veis nome do filme e sexo
+	int quantPessoas,quantSessoes,contador;//apresenta��o de vari�veis quantidade de pessoas, de sesso�es e idade
+	int sexoM,sexoF,idade;//apresenta��o de vari�veis contador do sexo masculino e faminino
+	int criancas,adolescentes,adultos,idosos;//apresenta��o de vari�veis por faixa et�ria
+	sexoM=0;//declara��o do contador sexo masculino
+	sexoF=0;//declara��o do contador sexo feminino
+	criancas=0;//declara��o do contador de crian�as
+	adolescentes=0;//declara��o do contador de adolescentes
+	adultos=0;//declara��o do contador de adultos
+	idosos=0;//declara��o do contador de idosos
+	
+	do{//primeiro do while para novas pesquisas
+		do{//do while para quantidade de sess�es
+			printf("Digite a quantidade de sess�es que ser�o realizadas:\n");//mensagem para o usu�rios perguntando n�mero de sess�es
+			scanf("%d", &quantSessoes);//leitura da quantidade de sess�es digitada pelo usu�rio
+			fflush(stdin);//limpeza do buffer
+			if(quantSessoes!=2)//if para valida��o
+				printf("Quantidade de sess�es inv�lida.\n");// mensagem de erro
+			printf("____________________________________________________\n\n");//tentativa de interface
+		}while(quantSessoes!=2);//valida��o
+	
+		do{//do while para nome do filme
+			printf("Digite o nome do filme:\n");//mensagem para usu�rio perguntando o nome do filme
+			scanf("%s", &nomeFilme);//leitura do nome do filme digitado pelo usu�rio
+			//fgets(nomeFilme,30,stdin); recebe string com espa�o (n�o funciona direito)
+			fflush(stdin);//limpeza de buffer
+			if(strlen(nomeFilme)<1)//if para valida��o
+				printf("Nome do filme inv�lido.\n");// mensagem de erro
+			printf("____________________________________________________\n\n");//tentativa de interface
+		}while(strlen(nomeFilme)<1);//valida��o
+	
+		do{//do while para quantidade de pessoas que assistiram o filme
+			printf("Digite a quantidade de pessoas que assistiram o filme:\n");//mensagem para usu�rio perguntando quantidade de pessoas
+			scanf("%d", &quantPessoas);//leitura da quantidade de pessoas digitada pelo usu�rio
+			fflush(stdin);//limpeza de buffer
+			if(quantPessoas<10)//if para valida��o
+				printf("Quantidade de pessoas inv�lida.(M�nimo 10 pessoas)\n");//mensagem de erro
+			printf("____________________________________________________\n\n");//tentativa de interface
+		}while(quantPessoas<10);//valida��o
+	
+		system("cls");//limpeza de tela
+	
+		for(contador=1;contador<=quantPessoas;contador++){//looping para pegar todos os dados das pessoas
+		
+			do{//do while para sexo de cada pessoa
+				printf("Digite o sexo da pessoa n�mero %d:\n(M - Masculino, F - Feminino)\n",contador);//mensagem para usuario pedindo o sexo de cada pessoa
+				scanf("%c",&sexo);//leitura do sexo
+				fflush(stdin);//limpeza de buffer
+				sexo=toupper(sexo);//convers�o para letra maiuscula caso o usu�rio digite em letra min�cula
+				if(sexo!='M' && sexo!='F')//if para valida��o
+				printf("Sexo inv�lido.\n");//mensagem de erro
+				printf("____________________________________________________\n\n");//tentativa de interface
+			}while(sexo!='M' && sexo!='F');//valida��o
+			
+			if(sexo=='M')//if caso o sexo seja masculino
+				sexoM=sexoM+1;//contagem de pessoas do sexo masculino
+				
+			if(sexo=='F')//if caso o sexo seja feminino
+				sexoF=sexoF+1;//contagem de pessoas do sexo feminino
+			
+			do{//do while para idade das pessoas
+				printf("Digite a idade da pessoa n�mero %d:\n",contador);//mensagem paro o usu�rio pegindo a idade das pessoas
+				scanf("%d",&idade);//leitura da idade
+				fflush(stdin);//limpeza do buffer
+				if(idade<3 || idade>100)//if para valida��o
+				printf("Idade inv�lida.\n");//mensagem de erro
+				printf("____________________________________________________\n\n");//tentativa de interface
+			}while(idade<3 || idade>100);//valida��o
+			
+			if(idade>=3 && idade<=13)//if para crian�as
+				criancas=criancas+1;//contagem de crian�as
+				else if(idade>=14 && idade<=17)//if para adolescentes
+					adolescentes=adolescentes+1;//contagem de adolescentes
+					else if(idade>18 && idade<=64)//if para adultos
+						adultos=adultos+1;//contagem de adultos
+						else if(idade>=65 && idade<=100)//if para idosos
+							idosos=idosos+1;//contagem de idosos			
+		system("cls");//limpeza de tela		
+		}//fim do for
+		
+		printf("Nome do filme: %s		N�mero de sess�es: %d\n",nomeFilme,quantSessoes);//sa�da
+		printf("_________________________________________________________");//sa�da
+		printf("\nQuantidade total de pessoas que assistiram o filme: %d\n",quantPessoas);//sa�da
+		printf("_________________________________________________________");//sa�da
+		printf("\nPessoas do sexo masculino: %d\nPessoas do sexo feminino : %d\n",sexoM,sexoF);//sa�da
+		printf("_________________________________________________________");//sa�da
+		printf("\nFaixa et�ria:\n");//sa�da
+		printf("Crian�as      (de 3 at� 13 anos)   : %d\n",criancas);//sa�da
+		printf("Adolescentes  (de 14 at� 17 anos)  : %d\n",adolescentes);//sa�da
+		printf("Adultos       (de 18 at� 64)       : %d\n",adultos);//sa�da
+		printf("Idosos        (de 65 at� 100 anos) : %d\n",idosos);//sa�da
+		printf("_________________________________________________________\n\n\n");//sa�da
+		printf("Deseja fazer uma nova pesquisa?\n");//sa�da
+		printf("Digite S caso queira ou outra tecla para finalizar.\n");//mensagem para usu�rio perguntando se ele quer nova pesquisa
+		scanf("%c",&novaPesquisa);//leitura para nova pesquisa
+		novaPesquisa=toupper(novaPesquisa);//convers�o para letra maiuscula
+	}while(novaPesquisa == 'S');//nova pesquisa
+	
+	system("cls");//limpeza de tela
+	
+	return 0;//fim da fun��o
+	
+}//fim do algoritmo
