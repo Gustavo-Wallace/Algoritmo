@@ -1,0 +1,45 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+int main(){
+	
+	int num,contador1,contador2;
+	
+	do{
+		printf("Digite um numero de 1 a 500: ");
+		scanf("%d",&num);
+		if(num<1 || num>500)
+			printf("Numero invalido\n");
+	}while(num<1 || num>500);
+	
+	system("cls");
+
+	contador2=num;
+	for(contador1=1;contador1<=num;contador1++){
+		
+		if(contador1%4==0 && contador1%5==0)
+			printf("BINGO");		
+				else if(contador1%4==0)
+					printf("M4");	
+					else if(contador1%5==0)
+						printf("M5");
+						else printf("%d",contador1);
+
+		printf("\t");
+
+		if(contador2%4==0 && contador2%5==0)
+			printf("BINGO");
+			else if(contador2%4==0)
+				printf("M4");
+				else if(contador2%5==0)
+					printf("M5");
+					else printf("%d",contador2);
+
+		printf("\n");
+		
+		contador2=contador2-1;
+	}
+
+
+	return 0;
+}
