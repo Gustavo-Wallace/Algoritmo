@@ -1,0 +1,57 @@
+#include<stdio.h>
+
+int main(){ 
+	float num1,num2,result;
+	char op;
+	
+	printf("---------------------\n");
+	printf("Calculadora\n");
+	printf("---------------------\n");
+	printf("N1: ");
+	scanf("%f", &num1);
+	printf("\nOP: ");
+	scanf(" %c", &op);
+	printf("\nN2: ");
+	scanf("%f", &num2);
+	printf("---------------------\n");
+	
+	//swift(op){
+	//	case: '+'
+	//		result=num1+num2;
+	//		printf("Resultado: %f",result);
+	//	break;
+	//	case: '-'
+	//		result=num1-num2;
+	//		printf("Resultado: %f",result);
+	//	break;
+	//	case: '*'
+	//		result=num1*num2;
+	//		printf("Resultado: %f",result);
+	//	break;
+	//	case: '/'
+	//		result=num1/num2;
+	//		printf("Resultado: %f",result);
+	//	break;
+	//	default:
+	//		printf("Operador invalido");
+	//}
+	
+	
+	if(op=='+'){
+		result=num1+num2;
+		printf("Resultado: %f",result);
+	}else if(op=='-'){
+		result=num1-num2;
+		printf("Resultado: %f",result);
+	}else if(op=='*'){
+		result=num1*num2;
+		printf("Resultado: %f",result);
+	}else if(op=='/'){
+		result=num1/num2;
+		printf("Resultado: %f",result);
+	}else
+		printf("Operador invalido");
+	
+	
+	return 0;
+}
