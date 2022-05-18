@@ -7,7 +7,7 @@ int main(){
 	float mediaTotal;
 	
 	struct Estudante{
-		int matricula[10];
+		char matricula[10];
 		char nome[50];
 		float notas[4],media;
 	};
@@ -27,19 +27,20 @@ int main(){
 		scanf("%f", &estudante[i].notas[2]);
 		printf("Digite a nota 4 do aluno %d: ", i+1);
 		scanf("%f", &estudante[i].notas[3]);
-		fflush(stdin);
+		//fflush(stdin);
 		estudante[i].media = (estudante[i].notas[0] + estudante[i].notas[1] + estudante[i].notas[2] + estudante[i].notas[3]) / 4;
 		system("cls");
 	}
-	
-		mediaTotal = (estudante[0].media+estudante[1].media+estudante[2].media+estudante[3].media+estudante[4].media+estudante[5].media+estudante[6].media+estudante[7].media+estudante[8].media+estudante[9].media)/10;
 
+	mediaTotal = (estudante[0].media+estudante[1].media+estudante[2].media+estudante[3].media+estudante[4].media+estudante[5].media+estudante[6].media+estudante[7].media+estudante[8].media+estudante[9].media)/10;
+
+	
 	for(i=0;i<10;i++){
 		printf("Aluno %d\n", i+1);
 		printf("Matricula: %s\n", estudante[i].matricula);
 		printf("Nome: %s\n", estudante[i].nome);
 		printf("N1: %.1f  N2: %.1f  N3: %.1f  N4: %.1f\n", estudante[i].notas[0],estudante[i].notas[1],estudante[i].notas[2],estudante[i].notas[3]);
-		printf("Media: %d\n", estudante[i].media);
+		printf("Media: %f\n", estudante[i].media);
 		printf("-------------------------------------------\n");
 		fflush(stdin);	
 	}
