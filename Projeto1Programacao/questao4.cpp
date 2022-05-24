@@ -12,28 +12,30 @@ int main(){
 		
 	tamanhoNome=strlen(nome);
 	
-	printf("%s",nome);
-	printf("\n%d",tamanhoNome);
-	
-	for(i=0;i<tamanhoNome;tamanhoNome++){
+	for(i=0;i<tamanhoNome;i++){
 		if(nome[i]==' '){
 			espaco = i;
 		}
 	}
 	
-	printf("\n%d",espaco);
 	
 	for(i=espaco+1;i<tamanhoNome;i++){
 		printf("%c", toupper(nome[i]));
 	}
 	
-	printf(",");
+	printf(", ");
+	
+	for(i=0;i<tamanhoNome;i++){
+		if(i == 0 || nome[i - 1] == ' '){
+			nome[i] = toupper(nome[i]);
+		}else{
+			nome[i] = tolower(nome[i]);
+		}
+	}
 	
 	for(i=0;i<espaco;i++){
-		if(i==0){
-		printf("%c", toupper(nome[i]));
-		}else{
-		printf("%c", tolower(nome[i]));
+		if(isupper(nome[i])){
+			printf("%c. ", nome[i]);
 		}
 	}
 	
