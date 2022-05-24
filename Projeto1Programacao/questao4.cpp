@@ -7,7 +7,7 @@ int main(){
 	char nome[50];
 	int i=0, tamanhoNome=0, espaco=0;
 	
-	printf("Digite o seu nome: ");
+	printf("Digite o seu nome: \n");
 	scanf("%[^\n]s",&nome);
 		
 	tamanhoNome=strlen(nome);
