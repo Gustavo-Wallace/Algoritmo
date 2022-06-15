@@ -70,7 +70,7 @@ int main(){
 						
 					for(i=0;i<MAX_JOGOS;i++){									//verificacao caso o ID ja tenho sido utilizado
 						if((i != contadorJogos) && (jogo[contadorJogos].id == jogo[i].id)){
-							jogo[contadorJogos].id = 0;							//caso ele já estiver sendo utilizado o valor sera modificado para 0, assim nao passando na validacao
+							jogo[contadorJogos].id = 0;							//caso ele jÃ¡ estiver sendo utilizado o valor sera modificado para 0, assim nao passando na validacao
 							printf("Numero de identificacao ja utilizado!\n");
 						}
 					}
@@ -138,6 +138,8 @@ int main(){
 				scanf("%[^\n]s", procurarCidade);
 				fflush(stdin);
 				
+				semJogos = 0;
+				
 				for(i=0; i<=contadorJogos; i++){
 					if(strcmp(jogo[i].cidade, procurarCidade) == 0){
 						printf("Cidade: %s\n", procurarCidade);
@@ -147,7 +149,7 @@ int main(){
 						semJogos=semJogos+1;
 					}		
 				}
-				if(semJogos>0){
+				if(semJogos<1){
 				printf("Nao ocorreu jogos na cidade %s", procurarCidade);
 				}
 				
