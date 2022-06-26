@@ -23,11 +23,11 @@ int main(){
 	struct Jogo jogo[MAX_JOGOS];
 
 	do{
-	printf("Digite o nome do Presidente do CBF:\n");
-	scanf("%[^\n]s", &nomePresidente);
-	fflush(stdin);
-	if(strlen(nomePresidente)<1 || strlen(nomePresidente)>1)
-		printf("Nome do presidente invalido!\n");
+		printf("Digite o nome do Presidente do CBF:\n");
+		scanf("%[^\n]s", &nomePresidente);
+		fflush(stdin);
+		if(strlen(nomePresidente)<1 || strlen(nomePresidente)>50)
+			printf("Nome do presidente invalido!\n");
 	}while(strlen(nomePresidente)<1 || strlen(nomePresidente)>50);
 	
 	tamanhoNome=strlen(nomePresidente);
@@ -112,6 +112,7 @@ int main(){
 				}
 				printf("\nId do jogo\tValor arrecadado(R$)\tCidade\n");
 				fflush(stdin);
+				
 				//for(i=0; i<=contadorJogos; i++){						//tentativa ordem alfabetica		
 				//	for(j=i+1; j<=contadorJogos; j++){								
 				//		ordemAlfabetica = strcmp(jogo[i].cidade,jogo[j].cidade);
@@ -122,7 +123,7 @@ int main(){
 				//		}
 				//	}
 				//}
-				fflush(stdin);
+				
 				for(i=0; i<contadorJogos; i++){
 					printf("%d\t\t %.2f\t \t%s \n", jogo[i].id, jogo[i].valor , jogo[i].cidade);
 					fflush(stdin);
@@ -150,15 +151,15 @@ int main(){
 					}		
 				}
 				if(semJogos<1){
-				printf("Nao ocorreu jogos na cidade %s", procurarCidade);
+				printf("Nao ocorreu jogos na cidade %s\n", procurarCidade);
 				}
 				
 			system("pause");	
 			break;
 				
-			case 6:
+			case 4:
 				system("cls");
-				printf("Fim do programa.");
+				printf("Fim do programa.\n");
 				system("pause");
 			break;
 		}
