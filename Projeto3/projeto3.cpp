@@ -36,7 +36,7 @@ void cadastroPiloto(struct Piloto *piloto, int contadorPilotos, char **paises){	
 
         for(i=0;i<MAX_PILOTOS;i++){
         		if((i != contadorPilotos) && (piloto[contadorPilotos].id == piloto[i].id)){		//verificacao caso o ID ja tenho sido utilizado
-        		piloto[contadorPilotos].id = 0;												//caso ele já estiver sendo utilizado o valor sera modificado para 0, assim nao passando na validacao
+        		piloto[contadorPilotos].id = 0;												//caso ele jÃ¡ estiver sendo utilizado o valor sera modificado para 0, assim nao passando na validacao
         		printf("Numero de identificacao ja utilizado!\n");
         	}
         }
@@ -363,7 +363,7 @@ void consultaVoltaTempoMenor(struct Volta *volta, int contadorVoltas){		//Proced
 		scanf("%d %d %d", &pesquisaTempo_minutos, &pesquisaTempo_segundos, &pesquisaTempo_milissegundos);
 
 		for(i=0; i<MAX_VOLTAS; i++){
-			if(pesquisaTempo_minutos <= volta[i].tempo_minutos){
+			if(pesquisaTempo_minutos >= volta[i].tempo_minutos){
 				printf("______________________________\n");
 				printf("ID do piloto: %d\n", volta[i].id_piloto);
 				printf("ID do circuito: %d\n,", volta[i].id_circuito);
