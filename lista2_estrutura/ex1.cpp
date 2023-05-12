@@ -9,6 +9,8 @@ void le_valida_num(int* num) {
     do {
         printf("Informe um numero entre %d e %d (ou 0 para sair): ", MIN_VALOR, MAX_VALOR);
         scanf("%d", num);
+        if(*num != 0 && (*num < MIN_VALOR || *num > MAX_VALOR)
+            printf("Numero invalido!");
     } while (*num != 0 && (*num < MIN_VALOR || *num > MAX_VALOR));
 }
 
@@ -26,13 +28,16 @@ void bubble_sort(int numeros[], int n) {
     }
 }
 
-int main() {
+int main(){
     int numeros[MAX_NUMEROS];
     int n, i;
+    char continuar;
 
     do {
-        printf("Quantos números deseja informar (entre %d e %d)? ", MIN_NUMEROS, MAX_NUMEROS);
+        printf("Quantos numeros deseja informar (entre %d e %d)? ", MIN_NUMEROS, MAX_NUMEROS);
         scanf("%d", &n);
+        if(n < MIN_NUMEROS || n > MAX_NUMEROS)
+            printf("Quantidade de numeros invalido!");
     } while (n < MIN_NUMEROS || n > MAX_NUMEROS);
 
     for (i = 0; i < n; i++) {
@@ -40,7 +45,6 @@ int main() {
 
         if (i == MIN_NUMEROS - 1) {
             printf("Você já informou os 10 primeiros números. Deseja continuar (s/n)? ");
-            char continuar;
             scanf(" %c", &continuar);
             if (continuar == 'n' || continuar == 'N') {
                 n = i + 1;
